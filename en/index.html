@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>K-POP One-Day Class in Incheon | RHYTHMHEARTZ</title>
+<meta name="description" content="K-POP dance one-day class in Incheon for visitors. Group and private classes at RHYTHMHEARTZ Geomdan, right in front of Ara Station Exit 7. One transfer from Incheon Airport.">
+<link rel="canonical" href="https://rhythmheartz.com/en/">
+<link rel="alternate" hreflang="en" href="https://rhythmheartz.com/en/">
+<link rel="alternate" hreflang="ko" href="https://rhythmheartz.com/">
+<meta property="og:title" content="RHYTHMHEARTZ K-POP One-Day Class · Incheon">
+<meta property="og:description" content="Learn real K-POP choreography at a local dance academy. Right in front of Ara Station, Exit 7.">
+<meta property="og:image" content="https://rhythmheartz.com/en/img/neon.jpg">
+<meta property="og:url" content="https://rhythmheartz.com/en/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Noto+Sans:wght@400;500;700&display=swap">
+<style>
+/* Layout: matches rhythmheartz.com — dark plum stage, condensed poster headlines, purple pills. Single dark look by choice. */
+:root{
+  --bg:#130a1b; --panel:#1c1127; --line:#33243f;
+  --fg:#f4eef8; --muted:#b7a9c4;
+  --accent:#7b3fe4; --accent-2:#e2669a;
+  --display:"Anton","Impact","Arial Narrow",sans-serif;
+  --body:"Noto Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;padding-inline:20px}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto}
+nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px;border-bottom:1px solid var(--line)}
+.logo{font-family:var(--display);font-size:22px;letter-spacing:.04em}
+.logo span{color:var(--accent-2)}
+.lang{display:flex;gap:6px;font-size:13px;font-weight:700}
+.lang a{padding:4px 10px;border-radius:99px;text-decoration:none;color:var(--muted);border:1px solid var(--line)}
+.lang a.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent-2)}
+h1,h2{font-family:var(--display);font-weight:400;text-transform:uppercase;line-height:1;margin:0;text-wrap:balance}
+h1{font-size:clamp(48px,9vw,104px)}
+h2{font-size:clamp(32px,5vw,52px)}
+h3{margin:0;font-size:20px}
+p{margin:0}
+.hero{padding-block:64px 48px;display:grid;gap:22px;position:relative}
+.hero-photo{position:relative;margin-inline:-20px;padding-inline:20px;border-radius:0 0 28px 28px;overflow:hidden;
+  background:linear-gradient(90deg,rgba(19,10,27,.94) 0%,rgba(19,10,27,.75) 45%,rgba(19,10,27,.15) 100%),url("img/neon.jpg") center/cover no-repeat}
+@media (min-width:1120px){.hero-photo{margin-inline:calc((1080px - 100vw)/2 + 0px);padding-inline:calc((100vw - 1080px)/2)}}
+.gallery{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:auto auto;gap:14px}
+.gallery figure{margin:0;position:relative;border-radius:16px;overflow:hidden;min-width:0;background:var(--panel)}
+.gallery figure:first-child{grid-row:span 2}
+.gallery img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:16/9}
+.gallery figure:first-child img{aspect-ratio:auto;min-height:100%}
+.gallery figcaption{position:absolute;left:12px;bottom:12px;background:rgba(19,10,27,.78);padding:5px 12px;border-radius:99px;font-size:13px;font-weight:700}
+.perks{display:flex;flex-wrap:wrap;gap:8px}
+.perks span{border:1px solid var(--line);border-radius:99px;padding:6px 14px;font-size:14px;color:var(--muted)}
+.hero p.lead{max-width:56ch;color:var(--muted);font-size:18px}
+.ctas{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:99px;font-weight:700;text-decoration:none;font-size:15px}
+.btn.primary{background:var(--accent);color:#fff}
+.btn.ghost{border:1.5px solid var(--fg)}
+.btn:focus-visible{outline:3px solid var(--accent-2);outline-offset:3px}
+.facts{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:14px;color:var(--muted);margin-top:6px}
+.facts b{color:var(--fg)}
+section{padding-block:56px;border-top:1px solid var(--line);display:grid;gap:28px}
+/* Route */
+.route{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;position:relative}
+.stop{position:relative;padding-top:34px;padding-right:12px;min-width:0}
+.stop::before{content:"";position:absolute;top:9px;left:0;right:0;height:4px;background:var(--line)}
+.stop:first-child::before{left:9px}
+.stop:last-child::before{right:auto;width:9px}
+.stop .dot{position:absolute;top:0;left:0;width:22px;height:22px;border-radius:50%;background:var(--bg);border:4px solid var(--muted)}
+.stop.line-arex::before{background:#5aa1d8}
+.stop.line-ic1::before{background:#8fb3e6}
+.stop.end .dot{border-color:var(--accent-2);background:var(--accent-2)}
+.stop .name{font-weight:700;font-size:17px}
+.stop .sub{font-size:13px;color:var(--muted)}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:99px;margin-top:6px}
+.tag.arex{background:#163049;color:#9fd0f5}
+.tag.ic1{background:#1d2a45;color:#b9d0f3}
+.tag.walk{background:#3a1830;color:#f3a9c8}
+.note{font-size:14px;color:var(--muted);max-width:70ch}
+/* Classes */
+.classes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:28px;display:grid;gap:16px;align-content:start}
+.card.feature{border-color:var(--accent)}
+.card .when{font-size:14px;color:var(--muted)}
+.price{display:grid;gap:6px}
+.row{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed var(--line);padding-bottom:6px;font-variant-numeric:tabular-nums}
+.row:last-child{border-bottom:0}
+.row b{font-size:18px}
+.row b small{font-size:13px;font-weight:500;color:var(--muted)}
+ul{margin:0;padding-left:18px;display:grid;gap:4px;color:var(--muted)}
+/* Steps */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;counter-reset:s;list-style:none;padding:0;margin:0}
+.steps li{background:var(--panel);border-radius:14px;padding:20px;display:grid;gap:6px;min-width:0}
+.steps li::before{counter-increment:s;content:counter(s);font-family:var(--display);font-size:34px;color:var(--accent-2);line-height:1}
+.steps li span{color:var(--muted);font-size:14px}
+/* FAQ */
+.faq{display:grid;gap:10px}
+details{background:var(--panel);border-radius:12px;padding:16px 20px}
+summary{cursor:pointer;font-weight:700}
+details p{color:var(--muted);margin-top:8px}
+.final{text-align:left;display:grid;gap:18px;padding-block:64px}
+footer{padding-block:28px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 24px}
+@media (max-width:760px){
+  .classes{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr}
+  .gallery figure:first-child{grid-row:auto}
+  .gallery figure:first-child img{aspect-ratio:16/9}
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .route{grid-template-columns:1fr;gap:18px}
+  .stop{padding-top:0;padding-left:38px}
+  .stop::before{top:22px;bottom:-18px;left:9px;right:auto;width:4px;height:auto}
+  .stop:first-child::before{left:9px}
+  .stop:last-child::before{display:none}
+}
+@media (prefers-reduced-motion:no-preference){.btn{transition:transform .15s}.btn:hover{transform:translateY(-2px)}}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <div class="logo">RHYTHM<span>HEARTZ</span></div>
+    <div class="lang"><a href="#" class="on">EN</a><a href="../" lang="ko" hreflang="ko">KR</a></div>
+  </nav>
+
+  <header class="hero hero-photo">
+    <div class="eyebrow">K-POP One-Day Class · Incheon</div>
+    <h1>Dance K-POP<br>like a local.</h1>
+    <p class="lead">Learn real K-POP choreography from working instructors at a local Korean dance academy. Easy to reach by subway: right in front of Ara Station, Exit 7.</p>
+    <div class="ctas">
+      <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfTCfrq62zLY3tnD7-SwvQTTM0u9yuw6e_UvcLvTTWKMtgk0Q/viewform">Book a class →</a>
+      <a class="btn ghost" href="#classes">See prices</a>
+    </div>
+    <div class="facts"><span><b>90 min</b> class</span><span><b>Age 10+</b></span><span><b>No experience</b> needed</span><span>Video within <b>3 days</b></span></div>
+  </header>
+
+  <section id="studio">
+    <div class="eyebrow">The studio</div>
+    <h2>Dance in a real K-POP studio</h2>
+    <div class="gallery">
+      <figure><img src="img/studio.jpg" alt="Main studio with a lit RHYTHMHEARTZ sign, full mirror wall and city view"><figcaption>Main studio · full mirror wall</figcaption></figure>
+      <figure><img src="img/lobby.jpg" alt="Purple lobby with a sofa lounge and a wall of performance photos"><figcaption>Lounge &amp; lobby</figcaption></figure>
+      <figure><img src="img/entrance.jpg" alt="Glass storefront of RHYTHMHEARTZ on the 8th floor"><figcaption>8F · look for the purple storefront</figcaption></figure>
+    </div>
+    <div class="perks"><span>Neon-lit practice rooms</span><span>Pro sound &amp; lighting</span><span>Lounge to rest</span><span>Free parking B1–B3</span></div>
+  </section>
+
+  <section id="getting-here">
+    <div class="eyebrow">Getting here</div>
+    <h2>One transfer from the airport</h2>
+    <div class="route">
+      <div class="stop line-arex"><div class="dot"></div><div class="name">Incheon Airport</div><div class="sub">Terminal 1 or 2</div><span class="tag arex">AREX</span></div>
+      <div class="stop line-ic1"><div class="dot"></div><div class="name">Gyeyang Station</div><div class="sub">Transfer to Incheon Line 1</div><span class="tag ic1">LINE 1 · 1 STOP</span></div>
+      <div class="stop"><div class="dot"></div><div class="name">Ara Station</div><div class="sub">About 5 min from Gyeyang</div><span class="tag walk">EXIT 7</span></div>
+      <div class="stop end"><div class="dot"></div><div class="name">RHYTHMHEARTZ</div><div class="sub">The One Tower 8F, right outside the exit</div></div>
+    </div>
+    <p class="note">Coming from Hongdae or Seoul Station? Take AREX to Gyeyang Station and follow the same route. Driving? Free parking on B1–B3.</p>
+  </section>
+
+  <section id="classes">
+    <div class="eyebrow">Classes &amp; prices</div>
+    <h2>Pick your class</h2>
+    <div class="classes">
+      <article class="card">
+        <h3>Group Class</h3>
+        <div class="when">Mon · Wed · Fri, 1:00–2:30 PM</div>
+        <div class="price">
+          <div class="row"><span>Basic</span><b>₩50,000 <small>/ person</small></b></div>
+          <div class="row"><span>With video</span><b>₩65,000 <small>/ person</small></b></div>
+        </div>
+        <ul>
+          <li>This month's K-POP song, announced on Instagram</li>
+          <li>Group photo and certificate</li>
+          <li>Minimum 3 people per class</li>
+          <li>Pay at the studio on the day (card or cash)</li>
+          <li>Coming as a group of 7 or more? Contact us first</li>
+        </ul>
+      </article>
+      <article class="card feature">
+        <h3>Private Class</h3>
+        <div class="when">Mon – Sat, start at 1, 2 or 3 PM</div>
+        <div class="price">
+          <div class="row"><span>1 person</span><b>₩180,000</b></div>
+          <div class="row"><span>Each additional person</span><b>+₩45,000</b></div>
+        </div>
+        <ul>
+          <li>Max 6 people in total</li>
+          <li>Choose your own song</li>
+          <li>Team video + individual fancam clips</li>
+          <li>Just you and your friends</li>
+          <li>₩50,000 deposit to book, balance on the day</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="eyebrow">How booking works</div>
+    <h2>Four steps</h2>
+    <ol class="steps">
+      <li><b>Send the form</b><span>Pick your class, date and group size.</span></li>
+      <li><b>Get our email</b><span>We reply within 24 hours to confirm.</span></li>
+      <li><b>Private only: deposit</b><span>₩50,000 by Korean bank transfer. No Korean account? Pay by card at the studio.</span></li>
+      <li><b>Come and dance</b><span>Arrive 10 minutes early. Bring indoor sneakers.</span></li>
+    </ol>
+  </section>
+
+  <section id="faq">
+    <div class="eyebrow">FAQ</div>
+    <h2>Good to know</h2>
+    <div class="faq">
+      <details><summary>I've never danced before. Is that OK?</summary><p>Yes. Every class starts with a warm-up and basic moves before the choreography.</p></details>
+      <details><summary>What should I wear?</summary><p>Comfortable clothes and clean indoor sneakers. Bring water.</p></details>
+      <details><summary>What is the cancellation policy?</summary><p>Group Class: let us know at least 24 hours before. Private Class: full deposit refund if you cancel 24+ hours before class; no refund for later cancellations or no-shows.</p></details>
+      <details><summary>What if the Group Class doesn't reach 3 people?</summary><p>We contact you 2 days before to offer another date, a Private Class, or a free cancellation.</p></details>
+    </div>
+  </section>
+
+  <section class="final">
+    <h2>Ready to dance?</h2>
+    <div class="ctas"><a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfTCfrq62zLY3tnD7-SwvQTTM0u9yuw6e_UvcLvTTWKMtgk0Q/viewform">Book a class →</a></div>
+  </section>
+
+  <footer>
+    <span>RHYTHMHEARTZ Geomdan · The One Tower 8F, 36 Ieum 5-ro, Seo-gu, Incheon</span>
+    <span>Instagram @rhz_geomdan</span>
+    <span>Closed Sundays &amp; public holidays</span>
+  </footer>
+</div>
+</body>
+</html>
