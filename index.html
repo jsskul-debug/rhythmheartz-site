@@ -852,5 +852,57 @@ class Component extends DCLogic {
 }
 DCLite.mount(Component, {"accent":"#C888B8"});
 </script>
+<!-- KDF Vol.3 공연 팝업 (2026-10-31 지나면 자동 숨김) -->
+<style>
+#rhz-pop{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(10,5,16,.72);backdrop-filter:blur(3px);font-family:'Noto Sans KR',sans-serif}
+#rhz-pop.on{display:flex;animation:rhzFade .35s ease}
+@keyframes rhzFade{from{opacity:0}to{opacity:1}}
+@keyframes rhzUp{from{transform:translateY(18px) scale(.97);opacity:0}to{transform:none;opacity:1}}
+#rhz-pop .box{position:relative;width:100%;max-width:400px;max-height:calc(100vh - 32px);overflow:auto;background:#1C1229;border:1px solid #3A2B4E;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,.55);animation:rhzUp .4s ease}
+#rhz-pop .box img{display:block;width:100%!important;height:auto!important;max-height:none!important;aspect-ratio:1/1;object-fit:cover;border-radius:15px 15px 0 0}
+#rhz-pop .box{max-width:min(380px,calc((100vh - 260px)*1))}
+#rhz-pop .x{position:absolute;top:10px;right:10px;width:36px;height:36px;border:0;border-radius:50%;background:rgba(18,10,28,.75);color:#F4EEF6;font-size:20px;line-height:36px;cursor:pointer}
+#rhz-pop .info{padding:16px 18px 6px;color:#F4EEF6}
+#rhz-pop .tag{font-family:Anton,sans-serif;letter-spacing:.06em;font-size:13px;color:#E2669A}
+#rhz-pop .tt{font-size:18px;font-weight:900;margin:4px 0 8px}
+#rhz-pop .meta{font-size:14px;line-height:1.6;color:#BFB3C9}
+#rhz-pop .meta b{color:#F4EEF6;font-weight:700}
+#rhz-pop .go{display:block;margin:14px 18px 6px;padding:13px;border-radius:999px;background:linear-gradient(90deg,#502088,#C888B8);color:#fff;text-align:center;font-weight:800;font-size:15px}
+#rhz-pop .go:hover{color:#fff;filter:brightness(1.08)}
+#rhz-pop .foot{display:flex;justify-content:space-between;padding:8px 18px 14px}
+#rhz-pop .foot button{background:none;border:0;color:#8F819C;font-size:13px;cursor:pointer;padding:6px 0;font-family:inherit}
+#rhz-pop .foot button:hover{color:#F4EEF6}
+</style>
+<div id="rhz-pop" role="dialog" aria-modal="true" aria-label="K-POP DANCE FESTIVAL Vol.3 공연 안내">
+  <div class="box">
+    <button class="x" type="button" aria-label="닫기" data-close>×</button>
+    <a href="https://blog.naver.com/diskjokey2/224436623189" target="_blank" rel="noopener"><img src="assets/kdf-vol3-popup.webp" alt="K-POP DANCE FESTIVAL Vol.3 RHZ Bupyeong &amp; Geomdan 포스터" width="800" height="800"></a>
+    <div class="info">
+      <div class="tag">K-POP DANCE FESTIVAL VOL.3</div>
+      <div class="tt">부평 &amp; 검단 정기 공연</div>
+      <div class="meta"><b>10월 31일 (토) 오후 2시</b><br>부천 복사골문화센터 아트홀</div>
+    </div>
+    <a class="go" href="https://blog.naver.com/diskjokey2/224436623189" target="_blank" rel="noopener">공연 자세히 보기</a>
+    <div class="foot"><button type="button" data-today>오늘 하루 보지 않기</button><button type="button" data-close>닫기</button></div>
+  </div>
+</div>
+<script>
+(function(){
+  var END = new Date('2026-10-31T23:59:59+09:00').getTime();
+  var KEY = 'rhz-pop-kdf3-hide';
+  if (Date.now() > END) return;
+  var today = new Date().toLocaleDateString('sv-SE',{timeZone:'Asia/Seoul'});
+  try { if (localStorage.getItem(KEY) === today) return; } catch(e){}
+  var pop = document.getElementById('rhz-pop');
+  if (!pop) return;
+  function close(){ pop.classList.remove('on'); document.removeEventListener('keydown', esc); }
+  function esc(e){ if (e.key === 'Escape') close(); }
+  pop.querySelectorAll('[data-close]').forEach(function(b){ b.addEventListener('click', close); });
+  pop.querySelector('[data-today]').addEventListener('click', function(){ try { localStorage.setItem(KEY, today); } catch(e){} close(); });
+  pop.addEventListener('click', function(e){ if (e.target === pop) close(); });
+  document.addEventListener('keydown', esc);
+  setTimeout(function(){ pop.classList.add('on'); }, 600);
+})();
+</script>
 </body>
 </html>
