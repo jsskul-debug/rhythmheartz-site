@@ -868,9 +868,18 @@ class Component extends DCLogic {
 }
 DCLite.mount(Component, {"accent":"#C888B8"});
 </script>
+<!-- 메인 영상 재생 보조: 모바일에서 자동재생이 멈췄을 때 첫 터치·화면 복귀 시 다시 재생 -->
+<script>
+(function(){
+  function playHero(){ document.querySelectorAll('video[autoplay]').forEach(function(v){ v.muted = true; if (v.paused) { var p = v.play(); if (p && p.catch) p.catch(function(){}); } }); }
+  ['touchstart','click','scroll'].forEach(function(ev){ document.addEventListener(ev, playHero, { passive: true }); });
+  document.addEventListener('visibilitychange', function(){ if (!document.hidden) playHero(); });
+  window.addEventListener('pageshow', playHero);
+})();
+</script>
 <!-- KDF Vol.3 공연 팝업 (2026-10-31 지나면 자동 숨김) -->
 <style>
-#rhz-pop{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(10,5,16,.72);backdrop-filter:blur(3px);font-family:'Noto Sans KR',sans-serif}
+#rhz-pop{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(10,5,16,.78);font-family:'Noto Sans KR',sans-serif}
 #rhz-pop.on{display:flex;animation:rhzFade .35s ease}
 @keyframes rhzFade{from{opacity:0}to{opacity:1}}
 @keyframes rhzUp{from{transform:translateY(18px) scale(.97);opacity:0}to{transform:none;opacity:1}}
@@ -911,13 +920,14 @@ DCLite.mount(Component, {"accent":"#C888B8"});
   try { if (localStorage.getItem(KEY) === today) return; } catch(e){}
   var pop = document.getElementById('rhz-pop');
   if (!pop) return;
-  function close(){ pop.classList.remove('on'); document.removeEventListener('keydown', esc); }
+  function playHero(){ document.querySelectorAll('video[autoplay]').forEach(function(v){ v.muted = true; if (v.paused) { var p = v.play(); if (p && p.catch) p.catch(function(){}); } }); }
+  function close(){ pop.classList.remove('on'); document.removeEventListener('keydown', esc); playHero(); }
   function esc(e){ if (e.key === 'Escape') close(); }
   pop.querySelectorAll('[data-close]').forEach(function(b){ b.addEventListener('click', close); });
   pop.querySelector('[data-today]').addEventListener('click', function(){ try { localStorage.setItem(KEY, today); } catch(e){} close(); });
   pop.addEventListener('click', function(e){ if (e.target === pop) close(); });
   document.addEventListener('keydown', esc);
-  setTimeout(function(){ pop.classList.add('on'); }, 600);
+  setTimeout(function(){ pop.classList.add('on'); playHero(); }, 600);
 })();
 </script>
 </body>
