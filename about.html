@@ -3,6 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HDFLS1D5MG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HDFLS1D5MG');
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var h = a.getAttribute('href') || '';
+    var m = h.indexOf('talk.naver.com') > -1 ? 'naver_talk' : h.indexOf('tel:') === 0 ? 'phone' : h.indexOf('naver.me') > -1 ? 'naver_booking' : '';
+    if (m) gtag('event', 'consult_click', { method: m, page_path: location.pathname });
+  });
+</script>
 <title>ABOUT | 리듬하츠 댄스학원</title>
 <meta name="description" content="리듬하츠 댄스학원 소개 | 인천 부평·검단 실용댄스 전문학원의 연혁, 대회 수상 기록, 대표 소개, 자주 묻는 질문.">
 <meta property="og:type" content="website">

@@ -3,6 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HDFLS1D5MG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HDFLS1D5MG');
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var h = a.getAttribute('href') || '';
+    var m = h.indexOf('talk.naver.com') > -1 ? 'naver_talk' : h.indexOf('tel:') === 0 ? 'phone' : h.indexOf('naver.me') > -1 ? 'naver_booking' : '';
+    if (m) gtag('event', 'consult_click', { method: m, page_path: location.pathname });
+  });
+</script>
 <meta name="naver-site-verification" content="4326fe46d3d0d2c1ac8db30cd198bf32cc7102b8" />
   <meta name="google-site-verification" content="LBPsM0zFfdNBnPf9J5JLnTJDNt9hD0PsmAZeY2uIbz4" />
 <title>리듬하츠 댄스학원 | 인천 실용댄스 전문 · 부평 · 검단</title>
