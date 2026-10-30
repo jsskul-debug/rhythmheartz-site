@@ -3,6 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HDFLS1D5MG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-HDFLS1D5MG');
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var h = a.getAttribute('href') || '';
+    var m = h.indexOf('talk.naver.com') > -1 ? 'naver_talk' : h.indexOf('tel:') === 0 ? 'phone' : h.indexOf('naver.me') > -1 ? 'naver_booking' : '';
+    if (m) gtag('event', 'consult_click', { method: m, page_path: location.pathname });
+  });
+</script>
 <title>K-POP One-Day Class in Incheon | RHYTHMHEARTZ</title>
 <meta name="description" content="K-POP dance one-day class in Incheon for visitors. Group and private classes at RHYTHMHEARTZ Geomdan, right in front of Ara Station Exit 7. One transfer from Incheon Airport.">
 <link rel="canonical" href="https://rhythmheartz.com/en/">
