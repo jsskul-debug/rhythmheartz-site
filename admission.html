@@ -108,6 +108,23 @@ a{color:#F4EEF6;text-decoration:none}a:hover{color:#E0B8D0}
  .hist li{grid-template-columns:1fr;gap:2px}
  .notice,.cta{padding:24px}
 }
+.hero-photo{margin:40px 0 0;position:relative}
+.hero-photo img{display:block;width:100%;height:auto;aspect-ratio:16/8;object-fit:cover;border-radius:16px;border:1px solid #2E2140}
+.hero-photo figcaption,.sys-img figcaption,.gallery figcaption{position:absolute;left:12px;bottom:12px;padding:6px 12px;border-radius:999px;background:rgba(18,10,28,.78);font-size:12px;font-weight:700;color:#F4EEF6}
+.sys article{grid-template-columns:96px minmax(0,1fr) 300px !important}
+.sys-img{margin:0;position:relative;align-self:start}
+.sys-img img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:10px}
+.gallery{margin-top:36px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.gallery figure{margin:0;position:relative}
+.gallery img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:12px}
+@media (max-width:760px){
+ .sys article{grid-template-columns:1fr !important}
+ .sys-img img{aspect-ratio:16/10}
+ .gallery{grid-template-columns:1fr 1fr}
+ .gallery .g-wide{grid-column:span 2}
+ .gallery .g-wide img{aspect-ratio:16/9}
+ .hero-photo img{aspect-ratio:4/3}
+}
 </style>
 </head>
 <body>
@@ -150,6 +167,10 @@ a{color:#F4EEF6;text-decoration:none}a:hover{color:#E0B8D0}
       <span>서울공연예고 · 인천대중예고 실용무용과 합격</span>
       <span aria-hidden="true" style="color: #C888B8">→</span>
     </a>
+    <figure class="hero-photo">
+      <img src="assets/pro-class.webp" alt="리듬하츠 전문반 · 입시반 수업 장면" width="966" height="644" fetchpriority="high">
+      <figcaption>전문반 · 입시반 수업</figcaption>
+    </figure>
   </section>
 
   <!-- 모집 공지 (매년 문구만 교체) -->
@@ -208,6 +229,7 @@ a{color:#F4EEF6;text-decoration:none}a:hover{color:#E0B8D0}
           <p>입시 전임 강사의 필수 수업에 더해, 내가 좋아하고 하고 싶은 수업을 직접 선택합니다. 댄스의 깊이와 넓이를 함께 배웁니다.</p>
           <p class="plus">+ 연습실 프리패스</p>
         </div>
+        <figure class="sys-img"><img src="assets/pro-training-2.webp" alt="전문반 · 입시반 수업 트레이닝" loading="lazy" style="object-position: center"><figcaption>수업 트레이닝</figcaption></figure>
       </article>
       <article>
         <div class="sys-no">02</div>
@@ -216,6 +238,7 @@ a{color:#F4EEF6;text-decoration:none}a:hover{color:#E0B8D0}
           <p>리듬하츠 정기공연 SLAM과 대회반 활동으로 지역·전국 대회에 출전하며 실전 경험을 쌓습니다.</p>
           <p class="plus">+ 청소년문화예술경연대회 대상 (2026)</p>
         </div>
+        <figure class="sys-img"><img src="assets/pro-award.webp" alt="제25회 청소년문화예술경연대회 중·고등부 대상 수상" loading="lazy" style="object-position: center 30%"><figcaption>청소년문화예술경연대회 대상</figcaption></figure>
       </article>
       <article>
         <div class="sys-no">03</div>
@@ -223,6 +246,7 @@ a{color:#F4EEF6;text-decoration:none}a:hover{color:#E0B8D0}
           <h3>실전 입시 준비</h3>
           <p>입시 전임 강사, 클래스 강사, 리듬하츠 실무진이 입시생의 작품, 모의 실기, 입시 정보, 개인별 피드백까지 함께합니다.</p>
         </div>
+        <figure class="sys-img"><img src="assets/pro-interview.webp" alt="입시 면접 대비" loading="lazy" style="object-position: center 40%"><figcaption>면접 대비</figcaption></figure>
       </article>
       <article class="hot">
         <div class="sys-no">04</div>
@@ -231,7 +255,20 @@ a{color:#F4EEF6;text-decoration:none}a:hover{color:#E0B8D0}
           <p>부평점 3·4층 전층(120평 이상), 검단점 3개 호실 + 테라스(90평 이상). 월 단위 팝업 클래스와 분기별 워크숍을 지원합니다.</p>
           <p class="plus">+ 리듬하츠 강사 우대 채용</p>
         </div>
+        <figure class="sys-img"><img src="assets/pro-workshop.webp" alt="팝업 클래스 · 워크숍" loading="lazy" style="object-position: center 30%"><figcaption>팝업 클래스 · 워크숍</figcaption></figure>
       </article>
+    </div>
+  </section>
+
+  <!-- IN CLASS -->
+  <section class="wrap" style="padding-bottom: 96px">
+    <div class="eyebrow">IN CLASS</div>
+    <h2 class="h2">실력은 매일의 훈련에서.</h2>
+    <div class="gallery">
+      <figure class="g-wide"><img src="assets/pro-physical.webp" alt="피지컬 트레이닝" loading="lazy"><figcaption>피지컬 트레이닝</figcaption></figure>
+      <figure><img src="assets/pro-training.webp" alt="수업 트레이닝" loading="lazy"><figcaption>수업 트레이닝</figcaption></figure>
+      <figure><img src="assets/pro-interview-2.webp" alt="면접 대비" loading="lazy" style="object-position: center 45%"><figcaption>면접 대비</figcaption></figure>
+      <figure class="g-wide"><img src="assets/pro-award-stage.webp" alt="청소년문화예술경연대회 시상" loading="lazy"><figcaption>대회 시상</figcaption></figure>
     </div>
   </section>
 
