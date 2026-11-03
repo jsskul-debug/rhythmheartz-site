@@ -70,7 +70,7 @@ a{color:#F4EEF6;text-decoration:none}a:hover{color:#E0B8D0}
   </section>
 
   <section style="max-width: 1320px; margin: 0 auto; padding: 0 24px 120px; box-sizing: border-box">
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 28px 16px">
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(180px, 100%), 1fr)); gap: 28px 16px">
       
         <div>
           
@@ -400,7 +400,7 @@ a{color:#F4EEF6;text-decoration:none}a:hover{color:#E0B8D0}
   </section>
 
   <section style="max-width: 1320px; margin: 0 auto; padding: 0 24px 120px; box-sizing: border-box">
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 28px 16px">
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(180px, 100%), 1fr)); gap: 28px 16px">
       <sc-for list="{{shown}}" as="t" hint-placeholder-count="29">
         <div>
           <sc-if value="{{t.hasImg}}" hint-placeholder-val="{{ false }}">
