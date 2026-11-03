@@ -94,6 +94,16 @@
         var frag = document.createDocumentFragment();
         var refs = [];
         tpl.content.childNodes.forEach(function (c) { walk(c, vals, frag, refs); });
+        // Keep an already-playing video (same src) instead of restarting it on re-render.
+        var oldVids = {};
+        root.querySelectorAll('video[src]').forEach(function (v) { oldVids[v.getAttribute('src')] = v; });
+        frag.querySelectorAll('video[src]').forEach(function (nv) {
+          var ov = oldVids[nv.getAttribute('src')];
+          if (!ov) return;
+          ov.setAttribute('style', nv.getAttribute('style') || '');
+          nv.parentNode.replaceChild(ov, nv);
+          refs.forEach(function (r) { if (r[1] === nv) r[1] = ov; });
+        });
         root.replaceChildren(frag);
         refs.forEach(function (r) { r[0](r[1]); });
       };
