@@ -360,6 +360,15 @@ a{color:#F4EEF6;text-decoration:none}a:hover{color:#E0B8D0}
           <div style="margin-top: 4px; font-size: 13px; color: #BFB3C9">키즈 K-POP</div>
         </div>
       
+        <div>
+          
+            <img src="assets/8e80eea5908e91dfd722d8c54cc37dc6.webp" alt="AERII 강사" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 6px">
+          
+          
+          <div style="margin-top: 12px; font-family: Anton, sans-serif; font-size: 22px; line-height: 1.1">AERII</div>
+          <div style="margin-top: 4px; font-size: 13px; color: #BFB3C9">키즈 락킹</div>
+        </div>
+      
     </div>
 
     <div style="margin-top: 72px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 28px 32px; border-radius: 6px; border: 1px solid #2E2140">
@@ -428,7 +437,7 @@ a{color:#F4EEF6;text-decoration:none}a:hover{color:#E0B8D0}
 
   <section style="max-width: 1320px; margin: 0 auto; padding: 0 24px 120px; box-sizing: border-box">
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(180px, 100%), 1fr)); gap: 28px 16px">
-      <sc-for list="{{shown}}" as="t" hint-placeholder-count="32">
+      <sc-for list="{{shown}}" as="t" hint-placeholder-count="33">
         <div>
           <sc-if value="{{t.hasImg}}" hint-placeholder-val="{{ false }}">
             <img src="{{t.img}}" alt="{{t.name}} 강사" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 6px">
@@ -512,7 +521,8 @@ class Component extends DCLogic {
       { name: 'EUN JIN', genre: '왁킹', img: 'assets/15889d6a1c324af1b64e00c68d415813.webp', b: ['geomdan'] },
       { name: 'DO YEON', genre: 'K-POP', img: 'assets/757976b84c23708b4f1374f0c37e91af.webp', b: ['geomdan'] },
       { name: 'SO HYUN', genre: '키즈 코레오', img: 'assets/be7c465dd1a09604b7add6eadb7cdcc5.webp', b: ['geomdan'] },
-      { name: 'SUJEONG', genre: '키즈 K-POP', img: 'assets/b4a03a3fa13d1c66ea124d1980ca4eaf.webp', b: ['geomdan'] }
+      { name: 'SUJEONG', genre: '키즈 K-POP', img: 'assets/b4a03a3fa13d1c66ea124d1980ca4eaf.webp', b: ['geomdan'] },
+      { name: 'AERII', genre: '키즈 락킹', img: 'assets/8e80eea5908e91dfd722d8c54cc37dc6.webp', b: ['geomdan'] }
     ].map((t) => ({ ...t, hasImg: !!t.img, noImg: !t.img }));
     return { shown: all };
   }
