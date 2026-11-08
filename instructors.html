@@ -74,15 +74,6 @@ a{color:#F4EEF6;text-decoration:none}a:hover{color:#E0B8D0}
       
         <div>
           
-            <img src="assets/f91ffc388e56515daafe2acf147575f8.webp" alt="LANG 강사" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 6px">
-          
-          
-          <div style="margin-top: 12px; font-family: Anton, sans-serif; font-size: 22px; line-height: 1.1">LANG</div>
-          <div style="margin-top: 4px; font-size: 13px; color: #BFB3C9">컨템포러리 · K-POP</div>
-        </div>
-      
-        <div>
-          
             <img src="assets/08f5bc662661a19c79a179f348350f1c.webp" alt="BEI 강사" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 6px">
           
           
@@ -254,6 +245,33 @@ a{color:#F4EEF6;text-decoration:none}a:hover{color:#E0B8D0}
       
         <div>
           
+            <img src="assets/5c997b54055ae9fc5686e70422c78ecc.webp" alt="MU:EL 강사" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 6px">
+          
+          
+          <div style="margin-top: 12px; font-family: Anton, sans-serif; font-size: 22px; line-height: 1.1">MU:EL</div>
+          <div style="margin-top: 4px; font-size: 13px; color: #BFB3C9">2030 여성 K-POP</div>
+        </div>
+      
+        <div>
+          
+            <img src="assets/decbfabde2f5950abea6061cb9d377c0.webp" alt="MIN SEO 강사" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 6px">
+          
+          
+          <div style="margin-top: 12px; font-family: Anton, sans-serif; font-size: 22px; line-height: 1.1">MIN SEO</div>
+          <div style="margin-top: 4px; font-size: 13px; color: #BFB3C9">리틀 하츠</div>
+        </div>
+      
+        <div>
+          
+            <img src="assets/d7daf4dc98b8c7cef708b340a69ab1ba.webp" alt="CHAEYEON 강사" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 6px">
+          
+          
+          <div style="margin-top: 12px; font-family: Anton, sans-serif; font-size: 22px; line-height: 1.1">CHAEYEON</div>
+          <div style="margin-top: 4px; font-size: 13px; color: #BFB3C9">재즈 코레오그래피</div>
+        </div>
+      
+        <div>
+          
             <img src="assets/b1d4a1df8e3268d6f137ef498e33fc1a.webp" alt="HYERA 강사" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 6px">
           
           
@@ -333,6 +351,15 @@ a{color:#F4EEF6;text-decoration:none}a:hover{color:#E0B8D0}
           <div style="margin-top: 4px; font-size: 13px; color: #BFB3C9">키즈 코레오</div>
         </div>
       
+        <div>
+          
+            <img src="assets/b4a03a3fa13d1c66ea124d1980ca4eaf.webp" alt="SUJEONG 강사" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 6px">
+          
+          
+          <div style="margin-top: 12px; font-family: Anton, sans-serif; font-size: 22px; line-height: 1.1">SUJEONG</div>
+          <div style="margin-top: 4px; font-size: 13px; color: #BFB3C9">키즈 K-POP</div>
+        </div>
+      
     </div>
 
     <div style="margin-top: 72px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 28px 32px; border-radius: 6px; border: 1px solid #2E2140">
@@ -401,7 +428,7 @@ a{color:#F4EEF6;text-decoration:none}a:hover{color:#E0B8D0}
 
   <section style="max-width: 1320px; margin: 0 auto; padding: 0 24px 120px; box-sizing: border-box">
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(180px, 100%), 1fr)); gap: 28px 16px">
-      <sc-for list="{{shown}}" as="t" hint-placeholder-count="29">
+      <sc-for list="{{shown}}" as="t" hint-placeholder-count="32">
         <div>
           <sc-if value="{{t.hasImg}}" hint-placeholder-val="{{ false }}">
             <img src="{{t.img}}" alt="{{t.name}} 강사" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 6px">
@@ -454,7 +481,6 @@ a{color:#F4EEF6;text-decoration:none}a:hover{color:#E0B8D0}
 class Component extends DCLogic {
   renderVals() {
     const all = [
-      { name: 'LANG', genre: '컨템포러리 · K-POP', img: 'assets/f91ffc388e56515daafe2acf147575f8.webp', b: ['geomdan'] },
       { name: 'BEI', genre: '힙합', img: 'assets/08f5bc662661a19c79a179f348350f1c.webp', b: ['geomdan'] },
       { name: 'DOII', genre: '코레오그래피', img: 'assets/67880c9b758534f40b0136b0c32d7da6.webp', b: ['geomdan'] },
       { name: 'YOUNG MIN', genre: '팝핑 · 검단점 부원장', img: 'assets/7d9a5c942545b790b510073895f25579.webp', b: ['geomdan'] },
@@ -474,6 +500,9 @@ class Component extends DCLogic {
       { name: 'ARIEL', genre: '코레오그래피', img: 'assets/60695976ddcede3825a8009599f31ede.webp', b: ['bupyeong'] },
       { name: 'RIKA', genre: 'K-POP', img: 'assets/36322f8a52dc86bef67d1c9a94733c9a.webp', b: ['bupyeong'] },
       { name: 'HEEYUP', genre: '왁킹', img: 'assets/fee7a699cfc03f0b0983a09e3ce883d6.webp', b: ['bupyeong'] },
+      { name: 'MU:EL', genre: '2030 여성 K-POP', img: 'assets/5c997b54055ae9fc5686e70422c78ecc.webp', b: ['bupyeong'] },
+      { name: 'MIN SEO', genre: '리틀 하츠', img: 'assets/decbfabde2f5950abea6061cb9d377c0.webp', b: ['bupyeong'] },
+      { name: 'CHAEYEON', genre: '재즈 코레오그래피', img: 'assets/d7daf4dc98b8c7cef708b340a69ab1ba.webp', b: ['bupyeong'] },
       { name: 'HYERA', genre: '걸스힙합', img: 'assets/b1d4a1df8e3268d6f137ef498e33fc1a.webp', b: ['geomdan'] },
       { name: 'EUN YOUNG', genre: '키즈 K-POP', img: 'assets/3f3da9fd3653f6e26ce9ed93c5cd5ecb.webp', b: ['geomdan'] },
       { name: 'YOUIN', genre: '전문반', img: 'assets/3b4da5cd61fa42f00169c15387dcb59b.webp', b: ['geomdan'] },
@@ -482,7 +511,8 @@ class Component extends DCLogic {
       { name: 'LESH', genre: '힐 코레오그래피', img: 'assets/183a75b501c8e49f8454f4dce12de675.webp', b: ['geomdan'] },
       { name: 'EUN JIN', genre: '왁킹', img: 'assets/15889d6a1c324af1b64e00c68d415813.webp', b: ['geomdan'] },
       { name: 'DO YEON', genre: 'K-POP', img: 'assets/757976b84c23708b4f1374f0c37e91af.webp', b: ['geomdan'] },
-      { name: 'SO HYUN', genre: '키즈 코레오', img: 'assets/be7c465dd1a09604b7add6eadb7cdcc5.webp', b: ['geomdan'] }
+      { name: 'SO HYUN', genre: '키즈 코레오', img: 'assets/be7c465dd1a09604b7add6eadb7cdcc5.webp', b: ['geomdan'] },
+      { name: 'SUJEONG', genre: '키즈 K-POP', img: 'assets/b4a03a3fa13d1c66ea124d1980ca4eaf.webp', b: ['geomdan'] }
     ].map((t) => ({ ...t, hasImg: !!t.img, noImg: !t.img }));
     return { shown: all };
   }
