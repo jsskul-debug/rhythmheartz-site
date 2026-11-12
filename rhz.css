@@ -1,0 +1,92 @@
+/* RHYTHMHEARTZ 공통 보정 스타일 (2026-11-13)
+   - 페이지 본문은 요소마다 style="" 로 적혀 있어서, 화면 크기별 규칙과 효과는 이 파일에서 덮어씁니다.
+   - 한국어 5개 페이지(index·about·schedule·instructors·admission)가 함께 씁니다. /en 은 쓰지 않습니다.
+   - 고친 뒤에는 각 페이지 <head>의 rhz.css?v=날짜 를 바꿔야 방문자에게 바로 반영됩니다. */
+
+/* 1. 줄바꿈: 단어 중간에서 끊기지 않게 */
+body{word-break:keep-all;overflow-wrap:break-word}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+:focus-visible{outline:2px solid #E0B8D0;outline-offset:3px;border-radius:4px}
+.rhz-prog::-webkit-scrollbar,.rhz-swipe::-webkit-scrollbar,header nav::-webkit-scrollbar{display:none}
+
+/* 2. 메인 첫 화면: 글자 뒤는 어둡게, 영상은 더 보이게 */
+#top>div[aria-hidden="true"]{background:linear-gradient(180deg,rgba(18,10,28,.38) 0%,rgba(18,10,28,.22) 38%,rgba(18,10,28,.94) 100%),linear-gradient(90deg,rgba(18,10,28,.72) 0%,rgba(18,10,28,0) 68%)!important}
+#top p[lang="en"]{background:linear-gradient(90deg,#F0C8E0 0%,#C888B8 45%,#9A5CE0 100%);-webkit-background-clip:text;background-clip:text;color:transparent!important;display:inline-block}
+#top h1{text-shadow:0 2px 24px rgba(18,10,28,.55)}
+
+/* 3. PC: 상단 메뉴 고정 + 마우스 올렸을 때 반응 */
+@media (min-width:721px){
+  header{position:sticky!important;top:0;z-index:50!important;background:rgba(18,10,28,.84)!important;-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+  header nav a{position:relative;transition:color .2s}
+  header nav a::after{content:"";position:absolute;left:0;right:0;bottom:-8px;height:2px;background:linear-gradient(90deg,#C888B8,#9A5CE0);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+  header nav a:hover::after{transform:scaleX(1)}
+  header nav a[aria-current="page"]{text-decoration:none!important}
+  header nav a[aria-current="page"]::after{transform:scaleX(1)}
+}
+@media (hover:hover){
+  .rhz-prog>a,#events .rhz-swipe>a,#instructors .rhz-swipe>div,#crew>div>div,.rhz-row{transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease}
+  .rhz-prog>a:hover,#events .rhz-swipe>a:hover,#instructors .rhz-swipe>div:hover,#crew>div>div:hover{transform:translateY(-6px);box-shadow:0 18px 44px rgba(80,32,136,.38)}
+  #events .rhz-swipe>a:hover{border-color:#C888B8!important}
+  .rhz-row:hover{border-color:#6A3A9A!important;transform:translateX(4px)}
+  .rhz-mosaic figure img,#events .rhz-swipe>a img,#crew>div>div>img,.rhz-inst>div>img{transition:transform .6s ease,filter .3s ease}
+  .rhz-mosaic figure:hover img,#events .rhz-swipe>a:hover img,#crew>div>div:hover>img{transform:scale(1.05)}
+  .rhz-inst>div{transition:transform .28s ease}
+  .rhz-inst>div:hover{transform:translateY(-6px)}
+  .rhz-inst>div:hover>img{filter:brightness(1.08) saturate(1.08)}
+  a[href*="talk.naver.com"],a[href^="tel:"]{transition:filter .2s ease,transform .2s ease}
+  a[href*="talk.naver.com"]:hover{filter:brightness(1.18)}
+}
+#crew>div>div{overflow:hidden}
+
+/* 4. PC: 스크롤하면 카드가 아래에서 떠오르는 효과 (지원하는 브라우저에서만, 움직임 줄이기 설정이면 끔) */
+@supports (animation-timeline:view()){
+  @media (min-width:721px) and (prefers-reduced-motion:no-preference){
+    .rhz-mosaic figure,.rhz-prog>a,#crew>div>div,#instructors .rhz-swipe>div,#events .rhz-swipe>a,#locations article,.rhz-inst>div{animation:rhzRise linear both;animation-timeline:view();animation-range:entry 0% entry 45%}
+  }
+}
+@keyframes rhzRise{from{opacity:0;translate:0 34px}to{opacity:1;translate:0 0}}
+
+/* 5. 모바일 */
+@media (max-width:720px){
+  html{scroll-padding-top:16px}
+
+  /* 상단 메뉴: 1줄(로고 + 버튼) + 1줄(메뉴, 옆으로 밀기) */
+  header>div{padding:10px 16px 0!important;gap:6px 8px!important;flex-wrap:wrap!important}
+  header>div>a:first-child{gap:8px!important;flex:0 0 auto}
+  header>div>a:first-child img{height:30px!important}
+  header>div>a:first-child span{font-size:19px!important;letter-spacing:.04em!important}
+  header>div>div{margin-left:auto;flex-wrap:nowrap!important;gap:6px!important}
+  header>div>div>a{min-height:38px!important}
+  header>div>div>a[href^="en"]{padding:2px 10px!important;font-size:10px!important;min-width:0!important}
+  header>div>div>a[href*="talk.naver.com"]{padding:0 13px 0 10px!important;font-size:0!important;gap:0!important}
+  header>div>div>a[href*="talk.naver.com"] svg{width:18px;height:18px}
+  header>div>div>a[href*="talk.naver.com"]::after{content:"상담";margin-left:6px;font-size:13px;font-weight:900;letter-spacing:0}
+  header nav{order:3;flex:0 0 calc(100% + 32px);margin:0 -16px;padding:2px 16px 0;box-sizing:border-box;flex-wrap:nowrap!important;gap:0 14px!important;font-size:11.5px!important;letter-spacing:.06em!important;white-space:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;-webkit-mask-image:linear-gradient(90deg,#000 0,#000 93%,transparent);mask-image:linear-gradient(90deg,#000 0,#000 93%,transparent)}
+  header nav a{flex:0 0 auto;min-height:44px;display:inline-flex!important;justify-content:center;align-items:center}
+  header nav a:last-child{padding-right:36px}
+  header nav a[aria-current="page"]{text-decoration:none!important;box-shadow:inset 0 -2px 0 #C888B8}
+
+  /* 구획 사이 여백 줄이기 */
+  #about,#crew,#events,#programs>div,#instructors>div,#locations>div{padding-top:72px!important;padding-bottom:72px!important}
+  #top{min-height:min(680px,88svh)!important}
+  #top>div:last-child{padding-bottom:44px!important}
+
+  /* 메인: 프로그램·이달의 강사·행사 카드를 옆으로 밀어 보기 */
+  .rhz-prog,.rhz-swipe{display:flex!important;gap:12px!important;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:24px;margin-left:-24px!important;margin-right:-24px!important;padding:0 24px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .rhz-prog>*,.rhz-swipe>*{flex:0 0 80%;box-sizing:border-box;scroll-snap-align:start}
+  .rhz-prog{margin-top:36px!important}
+  #instructors .rhz-swipe{margin-top:36px!important}
+
+  /* 시간표: 시간·분류 한 줄, 수업명 한 줄 */
+  .rhz-row{grid-template-columns:minmax(0,1fr) auto!important;gap:8px 12px!important;padding:16px 18px!important}
+  .rhz-row>div:first-child{grid-column:1;grid-row:1;font-size:17px!important;color:#E0B8D0!important}
+  .rhz-row>span{grid-column:2;grid-row:1}
+  .rhz-row>div:nth-child(2){grid-column:1 / -1;grid-row:2}
+
+  /* 강사진: 2열 */
+  .rhz-inst{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:22px 12px!important}
+  .rhz-inst>div>div:nth-of-type(1){font-size:19px!important}
+}
+@media (max-width:350px){
+  header>div>a:first-child span{display:none}
+}
