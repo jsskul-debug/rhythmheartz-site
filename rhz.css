@@ -90,3 +90,14 @@ html{scroll-behavior:smooth;scroll-padding-top:96px}
 @media (max-width:350px){
   header>div>a:first-child span{display:none}
 }
+
+/* 시간표: 주간 전체 보기 */
+.rhz-week>summary{list-style:none}
+.rhz-week>summary::-webkit-details-marker{display:none}
+.rhz-week>summary::after{content:"+";font-family:Anton,sans-serif;font-size:22px;color:#C888B8;margin-left:auto}
+.rhz-week[open]>summary::after{content:"–"}
+.rhz-week>summary>span:nth-child(2){margin-left:auto;white-space:nowrap}
+.rhz-week>summary::after{margin-left:14px}
+.rhz-week-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px 28px;margin-top:16px}
+@media (max-width:900px){.rhz-week-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.rhz-week-grid{grid-template-columns:minmax(0,1fr)}}
