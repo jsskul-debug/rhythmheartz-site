@@ -213,6 +213,9 @@ a.cta{display:grid;place-items:center;text-decoration:none}
 .res .ghost{display:block;width:100%;margin-top:8px;background:none;border:2px solid var(--pink);color:var(--deep);font-size:16px;padding:9px}
 .resmode{display:inline-block;margin:0 0 4px;padding:3px 12px;border-radius:99px;font-size:13px;background:var(--blush);color:var(--deep)}
 .resmode.chal{background:var(--deep);color:var(--paper)}
+.tcard{display:block;margin:10px 0 0;padding:9px 12px;border-radius:14px;background:var(--deep);color:var(--paper);text-decoration:none;line-height:1.35}
+.tcard span{display:block;font-size:13px;color:var(--blush)}.tcard b{display:block;font-family:var(--display);font-weight:400;font-size:19px}.tcard em{font-style:normal;font-size:13.5px;text-decoration:underline}
+.lbest{font-size:17px!important;margin:8px 0 2px!important}.lbest b{font-family:var(--display);font-weight:400;font-size:26px;color:var(--deep)}
 .tchalb{display:inline-block;margin:2px 0 6px;padding:5px 12px;border-radius:99px;background:var(--deep);color:var(--paper);font-size:14px}
 .tchalb em{font-style:normal;color:var(--blush);margin-right:2px}
 .tchalb b{font-family:var(--display);font-weight:400;font-size:16px}
@@ -397,15 +400,25 @@ a.cta{display:grid;place-items:center;text-decoration:none}
     <div class="actor"><div class="mv" id="rmv4" data-who="r"><img class="rimg" src="img/r1.webp" alt="리하"></div></div>
     <div class="ticket">
       <small>리듬하츠 댄스학원 검단점</small>
-      <h2>무대 초대장</h2>
-      <div class="stars" id="tstars"></div>
-      <p>체험 수업 <b>1회 무료</b> <span class="genre">(방송댄스)</span></p>
-      <div class="code"><span id="cleardate"></span> 클리어</div>
-      <p class="tbest" id="tbest"></p>
-      <div class="tchalb" id="tchalb" hidden></div>
-      <p class="hint"><b>이 화면을 캡처해 주세요</b><br>체험 오는 날 캡처 화면을 보여 주면 돼요</p>
+      <div id="twin">
+        <h2>무료 수강권</h2>
+        <div class="stars" id="tstars"></div>
+        <p>최초 <b>1회 무료</b> 수강권 <span class="genre">(방송댄스)</span></p>
+        <div class="code"><span id="cleardate"></span> 달성</div>
+        <p class="tbest" id="tbest"></p>
+        <div class="tchalb" id="tchalb" hidden></div>
+        <p class="hint"><b>이 화면을 캡처해 주세요</b><br>수업 오는 날 캡처 화면을 보여 주면 돼요</p>
+      </div>
+      <div id="tlose" hidden>
+        <h2>아쉽지만 다음 기회에!</h2>
+        <p class="lbest">내 최고 점수 <b id="lbest">0</b>점</p>
+        <div class="code"><b id="lneed">0</b>점만 더!</div>
+        <p class="hint"><b>20,000점을 넘으면</b><br>최초 1회 무료 수강권(방송댄스)을 받아요</p>
+        <a class="tcard" href="https://naver.me/59lQaSOr" target="_blank" rel="noopener"><span>지금 바로 배워 보고 싶다면?</span><b>첫 체험 수업 15,000원</b><em>부모님용 예약 열기 ›</em></a>
+      </div>
     </div>
-    <a class="cta" href="https://naver.me/59lQaSOr" target="_blank" rel="noopener">부모님용 예약 열기</a>
+    <a class="cta" id="treserve" href="https://naver.me/59lQaSOr" target="_blank" rel="noopener">부모님용 예약 열기</a>
+    <button class="cta" id="tretry" hidden>다시 도전하기</button>
     <button class="ghost" id="tchal">점수 도전</button>
     <button class="again" id="again">처음부터 다시 하기</button>
     <button class="ghost" id="tswitch">원생이에요</button>
@@ -415,7 +428,7 @@ a.cta{display:grid;place-items:center;text-decoration:none}
     <div class="say" id="say5"><b>리하</b><span>축하해! 그런데 너, 리듬하츠에 다니고 있어?</span></div>
     <div class="actor"><div class="mv" id="rmv5" data-who="r"><img class="rimg" src="img/r1.webp" alt="리하"></div></div>
     <div class="dock">
-      <p class="whohint">다니는 친구는 <b>점수 선물</b>, 처음인 친구는 <b>무료 체험</b>!</p>
+      <p class="whohint"><b>20,000점</b>을 넘으면 선물이 있어!</p>
       <button class="cta" id="isMember">응, 다니고 있어!</button>
       <button class="cta alt" id="isNew">아니, 처음이야!</button>
     </div>
@@ -572,7 +585,7 @@ function resetTitle(){introI=-1;$('#say0').hidden=true;$('#titlebox').hidden=fal
   $('#vsb').hidden=!VS;if(VS)$('#vsb').innerHTML=`친구 점수 <b>${fmt(VS)}점</b>에 도전!`;
   const bb=SAVE.chalBest||SAVE.storyBest;$('#bestb').hidden=!bb;
   if(bb)$('#bestb').innerHTML=`${SAVE.chalBest?'도전':'첫 무대'} 최고 <b>${fmt(bb)}점</b> ${grade(bb)} · ${UNLIMITED?'테스트':'오늘 '+playsLeft()+'번'}`;
-  $('#myticket').textContent=SAVE.member?'내 교환권':SAVE.member===false?'내 초대장':'내 선물';
+  $('#myticket').textContent=SAVE.member?'내 교환권':SAVE.member===false?'내 수강권':'내 선물';
   $('#tbtns').hidden=!SAVE.cleared;$('#trow').hidden=!(VS||bb||SAVE.cleared)}
 $('#start').addEventListener('click',()=>{
   audio();blip(523);bgmStart();introI++;if(introI===0)track('game_start');
@@ -672,9 +685,10 @@ const STAR_BEAT=64,MASH_A=60,MASH_B=63.75;
 const BASE={travel:1.25,win:.2};
 function levelOf(){return Math.min(12,SAVE.total||0)}
 /* 등급: 점수 도전 기준. 첫 무대는 만점이 약 17,000점이라 '센터'까지만 닿는다 */
-const GRADES=[[0,'연습생'],[8000,'루키'],[14000,'댄서'],[19000,'에이스'],[23000,'센터'],[26500,'스타'],[30000,'레전드']];
+const GRADES=[[0,'연습생'],[10000,'루키'],[15000,'댄서'],[20000,'에이스'],[22500,'센터'],[25000,'스타'],[27500,'슈퍼스타'],[30000,'레전드']];
+const GOAL=20000; /* 비원생 무료 수강권·원생 선물이 시작되는 점수 */
 /* 별: 모드별 점수 기준. 첫 무대 1개는 성공(하트 절반 이상)만 하면 받는다 */
-const STARCUT={story:[0,21000,26500],challenge:[14000,21000,26500]};
+const STARCUT={story:[0,20000,25000],challenge:[15000,20000,25000]};
 const starsOf=(mode,sc)=>STARCUT[mode].filter(c=>sc>=c).length;
 function nextGrade(sc){const g=GRADES.find(([v])=>v>sc);return g?[g[1],g[0]-sc]:null}
 const grade=s=>{let g=GRADES[0][1];for(const [v,n] of GRADES)if(s>=v)g=n;return g};
@@ -717,7 +731,7 @@ function playsLeft(){if(SAVE.day!==dayKey()){SAVE.day=dayKey();SAVE.plays=0;save
 const leftTxt=()=>UNLIMITED?'테스트 모드: 무제한':`오늘 남은 무대 ${playsLeft()}번`;
 const counts=()=>MODE==='challenge'||!!SAVE.cleared;
 function showLimit(){clearStage();$('#say3').hidden=true;$('#ready3').hidden=true;$('#s3').classList.add('pre');
-  $('#limn').textContent=DAILY;$('#limok').hidden=!SAVE.cleared;$('#limok').textContent=SAVE.member?'선물 교환권 보기':SAVE.member===false?'초대장 보기':'선물 보기';$('#lim').hidden=false;bgmStart();blip(392)}
+  $('#limn').textContent=DAILY;$('#limok').hidden=!SAVE.cleared;$('#limok').textContent=SAVE.member?'선물 교환권 보기':SAVE.member===false?'내 수강권 보기':'선물 보기';$('#lim').hidden=false;bgmStart();blip(392)}
 $('#limok').addEventListener('click',()=>{blip(659);goReward(false)});
 $('#limhome').addEventListener('click',()=>{blip(523);$('#again').click()});
 function resetRhythm(){
@@ -845,6 +859,7 @@ async function endRhythm(){
   if(AC)crash(AC.currentTime);
   if(ok){play($('#rmv3'),'pose');sparkle($('#s3'),50,45,14);applause();fanfare();
     if(isBest)SAVE[key]=r.score;
+    if(r.score>=GOAL&&!SAVE.winDate)SAVE.winDate=today();
     if(chal){SAVE.chalStars=Math.max(SAVE.chalStars||0,st);SAVE.chalDate=today();if(r.score>monthBest())SAVE.mBest=r.score}
     else{SAVE.cleared=true;SAVE.stars=Math.max(SAVE.stars||0,st);SAVE.date=today();SAVE.riha=G.riha}
     save()}
@@ -859,11 +874,11 @@ async function endRhythm(){
   else if(VS)msg=r.score>=VS?`친구 점수 ${fmt(VS)}점을 이겼어!`:`친구 점수까지 ${fmt(VS-r.score)}점 남았어. 한 번 더!`;
   else if(chal){const ng=nextGrade(r.score),nc=STARCUT.challenge.find(c=>c>r.score);
     msg=(isBest?'최고 점수를 새로 썼어! ':`내 최고는 ${fmt(SAVE.chalBest||0)}점. `)+(ng?`'${ng[0]}'까지 ${fmt(ng[1])}점!`:'최고 등급 레전드야!');}
-  else{const nc=STARCUT.story.find(c=>c>r.score);msg=nc?`별 하나 더 받으려면 ${fmt(nc-r.score)}점! 점수 도전도 해 볼래?`:'별 세 개! 이제 점수 도전에서 겨뤄 봐!'}
+  else msg=r.score>=GOAL?'20,000점 돌파! 선물을 받을 수 있어!':`선물까지 ${fmt(GOAL-r.score)}점! 점수 도전으로 올려 봐!`;
   $('#resmsg').textContent=msg;
   const left=playsLeft(),out=r.counted&&left<=0;r.out=out;
-  const rw=SAVE.member?'선물 교환권':SAVE.member===false?'초대장':'선물';
-  $('#resok').textContent=(!chal&&ok)?rw+' 받기':out?'오늘은 여기까지':!ok?'다시 도전':'한 번 더 도전';
+  const rw=SAVE.member?'선물 교환권':SAVE.member===false?(bestAll()>=GOAL?'무료 수강권':'내 결과'):'선물';
+  $('#resok').textContent=(!chal&&ok)?rw+(rw==='내 결과'?' 보기':' 받기'):out?'오늘은 여기까지':!ok?'다시 도전':'한 번 더 도전';
   $('#resleft').textContent=r.counted?leftTxt():'';
   $('#res2').hidden=!ok||(chal&&!SAVE.cleared);$('#res2').textContent=chal?rw+' 보기':'점수 도전하기';
   $('#res3').hidden=!ok;
@@ -887,7 +902,7 @@ $('#res3').addEventListener('click',()=>shareScore());
 
 /* ---------- 4. 엔딩 ---------- */
 /* 원생 선물: 이 달 점수 도전 최고 점수 기준. 품목은 여기서 바꾸면 된다 */
-const REWARDS=[[14000,'댄서','젤리 1개'],[19000,'에이스','반짝이 스티커'],[23000,'센터','말랑이'],[26500,'스타','인형 키링'],[30000,'레전드','리듬하츠 굿즈 세트']];
+const REWARDS=[[20000,'에이스','젤리 1개'],[22500,'센터','반짝이 스티커'],[25000,'스타','말랑이'],[27500,'슈퍼스타','인형 키링'],[30000,'레전드','리듬하츠 굿즈 세트']];
 const VRULE='선물은 한 달에 한 번, 마지막 주에 드려요 · 그 달 최고 등급 선물 하나 · 스타 이상은 학원에서 한 판 확인';
 function monthKey(){const d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1)}
 function monthBest(){if(SAVE.mKey!==monthKey()){SAVE.mKey=monthKey();SAVE.mBest=0;save()}return SAVE.mBest||0}
@@ -903,7 +918,7 @@ function voucher(quiet){
   const vs=$('#vscore');vs.classList.toggle('none',!mb);
   vs.innerHTML=mb?`<b>${fmt(mb)}</b>점 <em>${grade(mb)}</em>`:'아직 이번 달 점수 도전 기록이 없어!';
   const got=[...REWARDS].reverse().find(([v])=>mb>=v);
-  $('#vgift').innerHTML=got?`받을 선물 <b>${got[2]}</b>`:`<b>댄서(${fmt(REWARDS[0][0])}점)</b>부터 선물을 받을 수 있어!`;
+  $('#vgift').innerHTML=got?`받을 선물 <b>${got[2]}</b>`:`<b>${fmt(REWARDS[0][0])}점</b>까지 ${fmt(REWARDS[0][0]-mb)}점! 넘으면 선물을 받아요`;
   $('#vtiers').innerHTML=REWARDS.map(([v,g,it])=>`<li class="${got&&got[0]===v?'on':''}"><span>${g}</span><span class="n">${fmt(v)}~</span><span>${it}</span></li>`).join('');
   $('#vrule').textContent=VRULE+' · '+today();
   $('#vchal').textContent=mb?'점수 올리러 가기':'점수 도전 하러 가기';
@@ -917,9 +932,13 @@ $('#tswitch').addEventListener('click',()=>{blip(523);SAVE.member=true;save();re
 $('#vchal').addEventListener('click',()=>{blip(523);goChallenge()});
 $('#vshare').addEventListener('click',()=>shareScore());
 $('#vhome').addEventListener('click',()=>{$('#again').click()});
+const bestAll=()=>Math.max(SAVE.chalBest||0,SAVE.storyBest||0);
 function ending(quiet){
-  $('#cleardate').textContent=SAVE.date||today();
-  stars($('#tstars'),SAVE.stars||1,false);
+  const ba=bestAll(),win=ba>=GOAL;
+  $('#twin').hidden=!win;$('#tlose').hidden=win;$('#treserve').hidden=!win;$('#tretry').hidden=win;$('#tchal').hidden=!win;
+  if(!win){$('#lbest').textContent=fmt(ba);$('#lneed').textContent=fmt(GOAL-ba);play($('#rmv4'),'lock');return}
+  $('#cleardate').textContent=SAVE.winDate||today();
+  stars($('#tstars'),Math.max(SAVE.stars||0,SAVE.chalStars||0,2),false);
   const cb=SAVE.chalBest;$('#tchalb').hidden=!cb;
   if(cb)$('#tchalb').innerHTML=`<em>점수 도전 완료</em> <b>${fmt(cb)}점</b> ${grade(cb)} <span>${'★'.repeat(SAVE.chalStars||0)}${'☆'.repeat(3-(SAVE.chalStars||0))}</span>`;
   $('#tbest').textContent=!cb&&SAVE.storyBest?`첫 무대 ${fmt(SAVE.storyBest)}점`:'';
@@ -927,6 +946,7 @@ function ending(quiet){
   play($('#rmv4'),'pose');sparkle($('#s4'),50,30,12);
 }
 $('#tchal').addEventListener('click',()=>{blip(523);goChallenge()});
+$('#tretry').addEventListener('click',()=>{blip(523);goChallenge()});
 $('#again').addEventListener('click',()=>{blip(523);memRun++;clearStage();resetTitle();
   $$('.pick').forEach(p=>p.classList.toggle('on',p.dataset.id===G.riha));show('s0')});
 
