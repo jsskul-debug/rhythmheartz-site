@@ -413,7 +413,7 @@ a.cta{display:grid;place-items:center;text-decoration:none}
         <h2>아쉽지만 다음 기회에!</h2>
         <p class="lbest">내 최고 점수 <b id="lbest">0</b>점</p>
         <div class="code"><b id="lneed">0</b>점만 더!</div>
-        <p class="hint"><b>20,000점을 넘으면</b><br>최초 1회 무료 수강권(방송댄스)을 받아요</p>
+        <p class="hint"><b>18,000점을 넘으면</b><br>최초 1회 무료 수강권(방송댄스)을 받아요</p>
         <a class="tcard" href="https://naver.me/59lQaSOr" target="_blank" rel="noopener"><span>지금 바로 배워 보고 싶다면?</span><b>첫 체험 수업 15,000원</b><em>부모님용 예약 열기 ›</em></a>
       </div>
     </div>
@@ -428,7 +428,7 @@ a.cta{display:grid;place-items:center;text-decoration:none}
     <div class="say" id="say5"><b>리하</b><span>축하해! 그런데 너, 리듬하츠에 다니고 있어?</span></div>
     <div class="actor"><div class="mv" id="rmv5" data-who="r"><img class="rimg" src="img/r1.webp" alt="리하"></div></div>
     <div class="dock">
-      <p class="whohint"><b>20,000점</b>을 넘으면 선물이 있어!</p>
+      <p class="whohint"><b>18,000점</b>을 넘으면 선물이 있어!</p>
       <button class="cta" id="isMember">응, 다니고 있어!</button>
       <button class="cta alt" id="isNew">아니, 처음이야!</button>
     </div>
@@ -685,10 +685,10 @@ const STAR_BEAT=64,MASH_A=60,MASH_B=63.75;
 const BASE={travel:1.25,win:.2};
 function levelOf(){return Math.min(12,SAVE.total||0)}
 /* 등급: 점수 도전 기준. 첫 무대는 만점이 약 17,000점이라 '센터'까지만 닿는다 */
-const GRADES=[[0,'연습생'],[10000,'루키'],[15000,'댄서'],[20000,'에이스'],[22500,'센터'],[25000,'스타'],[27500,'슈퍼스타'],[30000,'레전드']];
-const GOAL=20000; /* 비원생 무료 수강권·원생 선물이 시작되는 점수 */
+const GRADES=[[0,'연습생'],[9000,'루키'],[14000,'댄서'],[18000,'에이스'],[21000,'센터'],[24000,'스타'],[27000,'슈퍼스타'],[30000,'레전드']];
+const GOAL=18000; /* 비원생 무료 수강권·원생 선물이 시작되는 점수 */
 /* 별: 모드별 점수 기준. 첫 무대 1개는 성공(하트 절반 이상)만 하면 받는다 */
-const STARCUT={story:[0,20000,25000],challenge:[15000,20000,25000]};
+const STARCUT={story:[0,18000,24000],challenge:[14000,18000,24000]};
 const starsOf=(mode,sc)=>STARCUT[mode].filter(c=>sc>=c).length;
 function nextGrade(sc){const g=GRADES.find(([v])=>v>sc);return g?[g[1],g[0]-sc]:null}
 const grade=s=>{let g=GRADES[0][1];for(const [v,n] of GRADES)if(s>=v)g=n;return g};
@@ -874,7 +874,7 @@ async function endRhythm(){
   else if(VS)msg=r.score>=VS?`친구 점수 ${fmt(VS)}점을 이겼어!`:`친구 점수까지 ${fmt(VS-r.score)}점 남았어. 한 번 더!`;
   else if(chal){const ng=nextGrade(r.score),nc=STARCUT.challenge.find(c=>c>r.score);
     msg=(isBest?'최고 점수를 새로 썼어! ':`내 최고는 ${fmt(SAVE.chalBest||0)}점. `)+(ng?`'${ng[0]}'까지 ${fmt(ng[1])}점!`:'최고 등급 레전드야!');}
-  else msg=r.score>=GOAL?'20,000점 돌파! 선물을 받을 수 있어!':`선물까지 ${fmt(GOAL-r.score)}점! 점수 도전으로 올려 봐!`;
+  else msg=r.score>=GOAL?'18,000점 돌파! 선물을 받을 수 있어!':`선물까지 ${fmt(GOAL-r.score)}점! 점수 도전으로 올려 봐!`;
   $('#resmsg').textContent=msg;
   const left=playsLeft(),out=r.counted&&left<=0;r.out=out;
   const rw=SAVE.member?'선물 교환권':SAVE.member===false?(bestAll()>=GOAL?'무료 수강권':'내 결과'):'선물';
@@ -902,7 +902,7 @@ $('#res3').addEventListener('click',()=>shareScore());
 
 /* ---------- 4. 엔딩 ---------- */
 /* 원생 선물: 이 달 점수 도전 최고 점수 기준. 품목은 여기서 바꾸면 된다 */
-const REWARDS=[[20000,'에이스','츄파춥스 1개'],[22500,'센터','젤리'],[25000,'스타','고급 리하 키링'],[27500,'슈퍼스타','말랑이'],[30000,'레전드','리듬하츠 굿즈 세트']];
+const REWARDS=[[18000,'에이스','츄파춥스 1개'],[21000,'센터','젤리'],[24000,'스타','고급 리하 키링'],[27000,'슈퍼스타','말랑이'],[30000,'레전드','리듬하츠 굿즈 세트']];
 const VRULE='선물은 한 달에 한 번, 마지막 주에 드려요 · 그 달 최고 등급 선물 하나 · 스타 이상은 학원에서 한 판 확인';
 function monthKey(){const d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1)}
 function monthBest(){if(SAVE.mKey!==monthKey()){SAVE.mKey=monthKey();SAVE.mBest=0;save()}return SAVE.mBest||0}
