@@ -41,6 +41,9 @@ button:focus-visible,a:focus-visible{outline:3px solid var(--blush);outline-offs
 .lbox b{display:block;font-family:var(--display);font-weight:400;font-size:30px;color:var(--blush);margin-bottom:18px}
 .lbox span{display:block;margin-top:12px;font-size:15px;color:var(--pink)}
 
+/* 베타 표시 */
+#betatag{position:absolute;z-index:20;top:14px;left:10px;font-size:11px;letter-spacing:.06em;color:var(--ink);background:var(--blush);border-radius:99px;padding:3px 9px 2px;opacity:.92;pointer-events:none}
+.beta{font-style:normal;font-size:12px;letter-spacing:.08em;background:var(--blush);color:var(--deep);border-radius:99px;padding:2px 8px 1px;margin-left:4px;vertical-align:1px}
 /* 소리 버튼 */
 #snd{position:absolute;z-index:20;top:8px;right:8px;width:36px;height:36px;border-radius:50%;background:rgba(22,21,25,.62);display:grid;place-items:center}
 #snd svg{width:20px;height:20px;fill:none;stroke:var(--blush);stroke-width:2.200;stroke-linecap:round;stroke-linejoin:round}
@@ -326,6 +329,7 @@ a.cta{display:grid;place-items:center;text-decoration:none}
 
   <div id="load"><div class="lbox"><b>리하의 첫 무대</b><div class="bar"><i id="lbar"></i></div><span>무대 준비 중…</span></div></div>
 
+  <div id="betatag" hidden>BETA · 시험 운영 중</div>
   <div id="toast"></div>
   <button id="snd" aria-label="소리 끄기">
     <svg class="on" viewBox="0 0 24 24"><path d="M4 9.500h3.500L12 5.500v13l-4.500-4H4z"/><path d="M15.500 9a4.200 4.200 0 0 1 0 6M18 6.500a7.800 7.800 0 0 1 0 11"/></svg>
@@ -334,7 +338,7 @@ a.cta{display:grid;place-items:center;text-decoration:none}
 
   <section class="scene on" id="s0" style="background-image:url(img/bg_lobby.jpg)">
     <div class="floaty" id="floaty"></div>
-    <div class="title" id="titlebox"><small>RHYTHMHEARTZ 댄스 게임</small><h1>리하의 <i>첫 무대</i></h1></div>
+    <div class="title" id="titlebox"><small>RHYTHMHEARTZ 댄스 게임 <em class="beta">BETA</em></small><h1>리하의 <i>첫 무대</i></h1></div>
     <div class="say" id="say0" hidden><b>리하</b><span></span></div>
     <div class="actor"><div class="mv" id="rmv0" data-who="r"><img class="rimg" src="img/r1.webp" alt="리하"></div></div>
     <div class="trow" id="trow" hidden><div class="vsb" id="vsb" hidden></div><div class="bestb" id="bestb" hidden></div><div class="tbtns" id="tbtns" hidden><button class="ghost" id="chal">점수 도전</button><button class="ghost" id="myticket">내 선물</button></div></div>
@@ -559,7 +563,7 @@ $('#snd').addEventListener('click',()=>{audio();setMute(!SAVE.mute)});
 $('#snd').classList.toggle('mute',!!SAVE.mute);
 
 /* ---------- 공통 ---------- */
-function show(id){$$('.scene').forEach(s=>s.classList.toggle('on',s.id===id))}
+function show(id){$$('.scene').forEach(s=>s.classList.toggle('on',s.id===id));$('#betatag').hidden=!(id==='s4'||id==='s6')}
 const POSEIMG={bounce:'bounce',waack:'jump',lock:'rhythm',step:'step',pose:'pose'};
 function baseSrc(el){return el.dataset.who==='y'?(el._base||'img/y_base.webp'):'img/'+G.riha+'.webp'}
 function play(el,cls,hold){el.classList.remove('bounce','waack','lock','step','pose','spin');void el.offsetWidth;el.classList.add(cls);clearTimeout(el._t);el._t=setTimeout(()=>el.classList.remove(cls),720);
