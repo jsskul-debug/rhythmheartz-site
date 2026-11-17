@@ -589,7 +589,7 @@ function resetTitle(){introI=-1;$('#say0').hidden=true;$('#titlebox').hidden=fal
   $('#vsb').hidden=!VS;if(VS)$('#vsb').innerHTML=`친구 점수 <b>${fmt(VS)}점</b>에 도전!`;
   const bb=SAVE.chalBest||SAVE.storyBest;$('#bestb').hidden=!bb;
   if(bb)$('#bestb').innerHTML=`${SAVE.chalBest?'도전':'첫 무대'} 최고 <b>${fmt(bb)}점</b> ${grade(bb)} · ${UNLIMITED?'테스트':'오늘 '+playsLeft()+'번'}`;
-  $('#myticket').textContent=SAVE.member?'내 교환권':SAVE.member===false?'내 수강권':'내 선물';
+  $('#myticket').textContent=SAVE.member?'내 교환권':SAVE.member===false?(Math.max(SAVE.chalBest||0,SAVE.storyBest||0)>=GOAL?'내 수강권':'내 결과'):'내 선물';
   $('#tbtns').hidden=!SAVE.cleared;$('#trow').hidden=!(VS||bb||SAVE.cleared)}
 $('#start').addEventListener('click',()=>{
   audio();blip(523);bgmStart();introI++;if(introI===0)track('game_start');
@@ -735,7 +735,7 @@ function playsLeft(){if(SAVE.day!==dayKey()){SAVE.day=dayKey();SAVE.plays=0;save
 const leftTxt=()=>UNLIMITED?'테스트 모드: 무제한':`오늘 남은 무대 ${playsLeft()}번`;
 const counts=()=>MODE==='challenge'||!!SAVE.cleared;
 function showLimit(){clearStage();$('#say3').hidden=true;$('#ready3').hidden=true;$('#s3').classList.add('pre');
-  $('#limn').textContent=DAILY;$('#limok').hidden=!SAVE.cleared;$('#limok').textContent=SAVE.member?'선물 교환권 보기':SAVE.member===false?'내 수강권 보기':'선물 보기';$('#lim').hidden=false;bgmStart();blip(392)}
+  $('#limn').textContent=DAILY;$('#limok').hidden=!SAVE.cleared;$('#limok').textContent=SAVE.member?'선물 교환권 보기':SAVE.member===false?(bestAll()>=GOAL?'내 수강권 보기':'내 결과 보기'):'선물 보기';$('#lim').hidden=false;bgmStart();blip(392)}
 $('#limok').addEventListener('click',()=>{blip(659);goReward(false)});
 $('#limhome').addEventListener('click',()=>{blip(523);$('#again').click()});
 function resetRhythm(){
@@ -787,7 +787,7 @@ async function startRhythm(){
   const easy=(MODE==='story'&&!SAVE.cleared)?Math.min(2,fails):0,t0=now()+.6,notes=buildChart(MODE,easy),total=STAR_BEAT*BEAT+1;
   const mashA=MASH_A*BEAT,mashB=MASH_B*BEAT;
   R={mode:MODE,t0,notes,hit:0,perfect:0,combo:0,max:0,mult:1,score:0,total,next:0,raf:0,timer:0,beat:-1,ended:false,
-     counted,lv,tk:easy?1:tk,win:M.win+easy*.04,travel:M.travel*(1+easy*.12),tiers:{pf:0,gr:0,gd:0,ok:0},mash:false,mashN:0,mashA,mashB,src:null,sg:null};
+     lat:PERF?0:Math.max(0,Math.min(.4,(AC&&AC.outputLatency)||0)),counted,lv,tk:easy?1:tk,win:M.win+easy*.04,travel:M.travel*(1+easy*.12),tiers:{pf:0,gr:0,gd:0,ok:0},mash:false,mashN:0,mashA,mashB,src:null,sg:null};
   if(buf&&AC&&!PERF){const src=AC.createBufferSource(),g=AC.createGain();src.buffer=buf;g.gain.value=.9;src.connect(g).connect(master);src.start(t0-SONG.off);R.src=src;R.sg=g}
   else{ /* 곡을 못 불러오면 같은 빠르기의 기본 비트 */
     const sched=()=>{if(!AC||PERF)return;const ahead=AC.currentTime+.25;
@@ -798,7 +798,7 @@ async function startRhythm(){
   const lanes=$('#lanes'),me=R,TR=R.travel;
   const frame=()=>{
     if(me!==R||R.ended)return;
-    const t=now()-t0,H=lanes.clientHeight,hitY=H*(1-.17);
+    const t=now()-t0-R.lat,H=lanes.clientHeight,hitY=H*(1-.17);
     for(const n of notes){
       if(n.done&&!n.el)continue;
       const dt=n.t-t;
@@ -827,7 +827,7 @@ function sfxTier(l,k){if(!AC)return;const t=AC.currentTime,f=[523,587,659][l]||5
 function tapLane(l){
   const btn=$(`.tap[data-l="${l}"]`);btn.classList.add('down');setTimeout(()=>btn.classList.remove('down'),90);
   if(!R||R.ended||!R.notes)return;
-  const t=now()-R.t0;
+  const t=now()-R.t0-R.lat;
   if(R.mash){ /* 연타: 아무 하트나 빠르게 */
     R.mashN++;const v=30*R.mult;addScore(v);$('#mashn').textContent=R.mashN;
     if(AC)tone(Math.min(1800,520+R.mashN*22),AC.currentTime,.07,'triangle',.22);
@@ -866,6 +866,7 @@ async function endRhythm(){
     if(r.score>=GOAL&&!SAVE.winDate)SAVE.winDate=today();
     if(chal){SAVE.chalStars=Math.max(SAVE.chalStars||0,st);SAVE.chalDate=today();if(r.score>monthBest())SAVE.mBest=r.score}
     else{SAVE.cleared=true;SAVE.stars=Math.max(SAVE.stars||0,st);SAVE.date=today();SAVE.riha=G.riha}
+    if(!r.counted){playsLeft();SAVE.plays=(SAVE.plays||0)+1;SAVE.total=(SAVE.total||0)+1;r.counted=true}
     save()}
   else fails++;
   await sleep(ok?1000:450);if(r!==R)return;
