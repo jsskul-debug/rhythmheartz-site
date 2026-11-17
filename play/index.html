@@ -902,7 +902,7 @@ $('#res3').addEventListener('click',()=>shareScore());
 
 /* ---------- 4. 엔딩 ---------- */
 /* 원생 선물: 이 달 점수 도전 최고 점수 기준. 품목은 여기서 바꾸면 된다 */
-const REWARDS=[[20000,'에이스','젤리 1개'],[22500,'센터','반짝이 스티커'],[25000,'스타','말랑이'],[27500,'슈퍼스타','인형 키링'],[30000,'레전드','리듬하츠 굿즈 세트']];
+const REWARDS=[[20000,'에이스','츄파춥스 1개'],[22500,'센터','젤리'],[25000,'스타','고급 리하 키링'],[27500,'슈퍼스타','말랑이'],[30000,'레전드','리듬하츠 굿즈 세트']];
 const VRULE='선물은 한 달에 한 번, 마지막 주에 드려요 · 그 달 최고 등급 선물 하나 · 스타 이상은 학원에서 한 판 확인';
 function monthKey(){const d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1)}
 function monthBest(){if(SAVE.mKey!==monthKey()){SAVE.mKey=monthKey();SAVE.mBest=0;save()}return SAVE.mBest||0}
